@@ -88,14 +88,11 @@ def logo(f: FunctionType):
     def wrapper(*args, **kwargs):
         print('''
 bool_hacker by
-           _                     ______                     
-     /\   | |                   |___  /                     
-    /  \  | | _____  _____ _   _   / / __ ___   ____ _ _ __ 
-   / /\ \ | |/ _ \ \/ / _ \ | | | / / / _` \ \ / / _` | '__|
-  / ____ \| |  __/>  <  __/ |_| |/ /_| (_| |\ V / (_| | |   
- /_/    \_\_|\___/_/\_\___|\__, /_____\__,_| \_/ \__,_|_|   
-                            __/ |                           
-                           |___/                            
+  _____                           _  ___ _
+ |__  /__ ___   ____ _ _ __ _   _| |/ (_) |_ ___ _   _ 
+   / // _` \ \ / / _` | '__| | | | ' /| | __/ __| | | |
+  / /| (_| |\ V / (_| | |  | |_| | . \| | |_\__ \ |_| |
+ /____\__,_| \_/ \__,_|_|   \__,_|_|\_\_|\__|___/\__,_|
 ''')
         f(*args, **kwargs)
 
@@ -112,8 +109,6 @@ class Table:
             self.headers.append('●')
 
         self.__column_size = len(max(headers, key=lambda x: len(x))) + 2
-        self.__column_count = len(self.headers)
-        self.__row_size = (((self.__column_size + 1) * self.__column_count) - 1)
 
     def generate_top(self):
         s = ''
@@ -323,7 +318,6 @@ def simplify(arg_names: List[str], dnf_expressions: BooleanExpression):
         vars.append(impl)
 
     step2 = [[False for _ in dnf_expressions] for _ in vars]
-    # step2 = [[all(arg in orig for arg in impl) for j, orig in enumerate(dnf_expressions)] for i, impl in enumerate(vars)]
 
     for i, impl in enumerate(vars):
         for j, orig in enumerate(dnf_expressions):
